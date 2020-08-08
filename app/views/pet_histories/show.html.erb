@@ -1,24 +1,44 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Weight:</strong>
-  <%= @pet_history.weight %>
-</p>
+<div class="shadow-lg p-4 mb-5 bg-white rounded">
+    <h1 class="text-center" style="font-size:40px; text-shadow: 0.05em 0.1em 0.05em #333">DETALLE CONSULTA DE "<%= @pet.name.upcase%>"</h1>
+    
+    <% if notice.present? %>
+      <div class="container mb-4 px-5 text-center">
+        <div class="shadow-lg mx-5  alert alert-warning alert-dismissible fade show border border-info rounded-pill" role="alert" style="background:#d5e4a1;">
+          <strong>ATENCION!</strong> <%= notice %>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      </div>
+    <% end %>
 
-<p>
-  <strong>Heigth:</strong>
-  <%= @pet_history.heigth %>
-</p>
+    <div class="text-center mt-3">
+      <p>
+        <strong>PESO:</strong>
+        <%= @pet_history.weight %>
+      </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @pet_history.description %>
-</p>
+      <p>
+        <strong>ALTURA:</strong>
+        <%= @pet_history.heigth %>
+      </p>
 
-<p>
-  <strong>Pet:</strong>
-  <%= @pet_history.pet %>
-</p>
+      <p>
+        <strong>DESCRIPCION:</strong>
+        <%= @pet_history.description %>
+      </p>
 
-<%= link_to 'Edit', edit_client_pet_pet_history_path(@client, @pet, @pet_history) %> |
-<%= link_to 'Back', client_pet_pet_histories_path %>
+      <p>
+        <strong>MASCOTA:</strong>
+        <%= @pet_history.pet %>
+      </p>
+
+    </div>
+    <hr>     
+    <div class="text-center pt-4">
+      <%= link_to 'EDITAR', edit_client_pet_pet_history_path(@client, @pet, @pet_history), class:"btn btn-dark rounded-pill border border-white btn-sm text-center" %> |
+      <%= link_to 'VOLVER', client_pet_pet_histories_path, class:"btn btn-dark rounded-pill border border-white btn-sm text-center" %>
+    </div>
+    
+</div>

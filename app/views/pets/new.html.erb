@@ -1,5 +1,10 @@
-<h1>New Pet</h1>
+<div class="shadow-lg p-4 mb-5 bg-white rounded">
+    <h1 class="text-center" style="font-size:40px; text-shadow: 0.05em 0.1em 0.05em #333">NUEVA MASCOTA</h1>
 
-<%= render 'form', pet: @pet %>
-
-<%= link_to 'Back', pets_path %>
+    <%= render 'form', pet: @pet %>
+    
+    <hr>
+    <div class="text-center">
+        <%= link_to 'VOLVER', client_pets_path, class:"btn btn-dark rounded-pill border border-white btn-sm text-center"%>
+    </div>        
+</div>

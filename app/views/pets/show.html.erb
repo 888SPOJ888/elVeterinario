@@ -1,68 +1,98 @@
-<p id="notice"><%= notice %></p>
-<td><%= link_to 'Ver Historial', client_pet_pet_histories_path(@client, @pet) %></td>
-<p>
-  <strong>Name:</strong>
-  <%= @pet.name %>
-</p>
 
-<p>
-  <strong>Race:</strong>
-  <%= @pet.race %>
-</p>
-
-<p>
-  <strong>Birthdate:</strong>
-  <%= @pet.birthdate %>
-</p>
-
-<p>
-  <strong>Client:</strong>
-  <%= @pet.client %>
-</p>
-
-<h2>Historial</h2>
-<table>
-  <thead>
-    <tr>
-      <th>Altura</th>
-      <th>Peso</th>
-      <th>Descripcion</th>
-      <th>Fecha</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @pet.pet_histories.each do |pet_history| %>
-      <tr>
-        <td><%= pet_history.heigth %></td>
-        <td><%= pet_history.weight %></td>
-        <td><%= pet_history.description %></td>
-        <td><%= pet_history.created_at %></td>
-      </tr>
+<div class="shadow-lg p-4 mb-5 bg-white rounded">
+    <h1 class="text-center" style="font-size:40px; text-shadow: 0.05em 0.1em 0.05em #333">DETALLE MASCOTA "<%= @pet.name.upcase%>"</h1>
+    
+    <% if notice.present? %>
+      <div class="container mb-4 px-5 text-center">
+        <div class="shadow-lg mx-5  alert alert-warning alert-dismissible fade show border border-info rounded-pill" role="alert" style="background:#d5e4a1;">
+          <strong>ATENCION!</strong> <%= notice %>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
 
-<h2>Informacion de Mascota</h2>
-<table>
-  <thead>
-    <tr>
-      <th>Peso Promedio</th>
-      <th>Altura Promedio</th>
-      <th>La altura Maxima</th>
-      <th>El peso maximo</th>
-    </tr>
-  </thead>
+    <div class="text-center mt-3">
+      <p>
+        <strong>NOMBRE:</strong>
+        <%= @pet.name %>
+      </p>
 
-  <tbody>   
-      <tr>
-        <td><%= @pet.avg_weight %></td>
-        <td><%= @pet.avg_height %></td>
-        <td><%= @pet.max_height %></td>
-        <td><%= @pet.max_weight %></td>
-      </tr>   
-  </tbody>
-</table>
+      <p>
+        <strong>RAZA:</strong>
+        <%= @pet.race %>
+      </p>
 
-<%= link_to 'Edit', edit_client_pet_path(@client, @pet) %> |
-<%= link_to 'Back', client_pets_path %>
+      <p>
+        <strong>FECHA DE NACIMIENTO:</strong>
+        <%= @pet.birthdate %>
+      </p>
+
+      <p>
+        <strong>CLIENTE:</strong>
+        <%= @pet.client %>
+      </p>
+     
+
+      <td><%= link_to 'Ver Historial', client_pet_pet_histories_path(@client, @pet), class:"btn btn-primary rounded-pill border border-white btn-sm text-center" %></td>
+    </div>
+    <hr>     
+    <div>
+      <h3 class="text-center" style="font-size:20px; text-shadow: 0.05em 0.1em 0.05em #333">ESTADISTICAS MASCOTA</h3>
+    </div>
+    <div>
+      <table class="shadow-lg table mt-3">
+        <thead class="thead-dark text-center">
+          <tr>
+            <th>Peso Promedio</th>
+            <th>Altura Promedio</th>
+            <th>La altura Maxima</th>
+            <th>El peso maximo</th>
+          </tr>
+        </thead>
+
+        <tbody class="text-center">
+          <tr>
+            <td><%= @pet.avg_weight %></td>
+            <td><%= @pet.avg_height %></td>
+            <td><%= @pet.max_height %></td>
+            <td><%= @pet.max_weight %></td>
+          </tr>   
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="mt-5">
+      <h3 class="text-center" style="font-size:20px; text-shadow: 0.05em 0.1em 0.05em #333">RESUMEN HISTORIAL</h3>
+    </div>
+    <div>
+      <table class="shadow-lg table mt-3">
+        <thead class="thead-dark text-center">
+          <tr>
+            <th>Altura</th>
+            <th>Peso</th>
+            <th>Descripcion</th>
+            <th>Fecha</th>
+          </tr>
+        </thead>
+
+        <tbody class="text-center">
+          <% @pet.pet_histories.each do |pet_history| %>
+          <tr>
+            <td><%= pet_history.heigth %></td>
+            <td><%= pet_history.weight %></td>
+            <td><%= pet_history.description %></td>
+            <td><%= pet_history.created_at %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+        
+    <div class="text-center pt-4">
+      <%= link_to 'EDITAR', edit_client_pet_path(@client, @pet), class:"btn btn-dark rounded-pill border border-white btn-sm text-center" %> |
+      <%= link_to 'VOLVER', client_pets_path, class:"btn btn-dark rounded-pill border border-white btn-sm text-center" %>
+    </div>
+    
+</div>

@@ -1,36 +1,37 @@
-<%= form_with(model: [@client, pet], local: true) do |form| %>
-<!-- Captura de Errores -->
-  <% if pet.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(pet.errors.count, "error") %> prohibited this pet from being saved:</h2>
+<div class="border border-dark p-4 text-center">
+ <%= form_with(model: [@client, pet], local: true) do |form| %>
+    <!-- Captura de Errores -->
+      <% if pet.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(pet.errors.count, "error") %> prohibited this pet from being saved:</h2>
 
-      <ul>
-      <% pet.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+          <ul>
+          <% pet.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
+    <!-- Captura de Errores -->
+
+
+    <div class="field">
+      <%= form.label :name, "NOMBRE:" %>
+      <%= form.text_field :name %>
+    </div>
+
+    <div class="field">
+      <%= form.label :race, "RAZA:" %>
+      <%= form.text_field :race %>
+    </div>
+
+    <div class="field">
+      <%= form.label :birthdate, "FECHA DE NACIMIENTO:" %>
+      <%= form.date_select :birthdate %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit class:"btn btn-success rounded-pill text-white mt-3 border border-info" %>
     </div>
   <% end %>
-<!-- Captura de Errores -->
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :race %>
-    <%= form.text_field :race %>
-  </div>
-
-  <div class="field">
-    <%= form.label :birthdate %>
-    <%= form.date_select :birthdate %>
-  </div>
-
-
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
