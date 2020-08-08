@@ -1,0 +1,6 @@
+<h1>Editing Pet</h1>
+
+<%= render 'form', pet: @pet %>
+
+<%= link_to 'Show', client_pet_path(@client, @pet) %> |
+<%= link_to 'Back', client_pets_path(@client) %>
